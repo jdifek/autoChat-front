@@ -1,0 +1,70 @@
+@use './variables.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	font-family: 'Libre Franklin', serif;
+	font-weight: 400;
+	line-height: 1.5;
+	background: variables.$white-color;
+	color: variables.$prime-black-color;
+}
+
+body.dark-mode {
+	background: variables.$dark-color;
+	color: variables.$white-color;
+}
+
+.container {
+	margin: 0 auto;
+	padding-left: 24px;
+	padding-right: 24px;
+
+	@media screen and (min-width: 768px) {
+		padding-left: 32px;
+		padding-right: 32px;
+	}
+	@media screen and (min-width: 1440px) {
+		max-width: 1440px;
+		padding-left: 80px;
+		padding-right: 80px;
+	}
+}
+
+.section {
+	padding: 24px 0;
+
+	@media screen and (min-width: 768px) {
+		padding: 32px 0;
+	}
+	@media screen and (min-width: 1440px) {
+		padding: 80px 0;
+	}
+}
+
+.wrapper {
+	margin: 0 auto;
+	padding: 0 15px;
+	width: 100%;
+	@media screen and (min-width: 480px) {
+		padding: 0 32px;
+	}
+	@media screen and (min-width: 768px) {
+		padding: 0 40px;
+	}
+	@media screen and (min-width: 768px) {
+		padding: 0 60px;
+	}
+}

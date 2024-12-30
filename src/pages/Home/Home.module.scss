@@ -1,0 +1,61 @@
+.heading {
+	position: relative;
+	height: 60px; // Фиксированная высота для стабильного отображения
+	overflow: hidden;
+	margin: 2rem 0;
+}
+
+.text-wrapper {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	animation: slideText 16s infinite;
+}
+
+.text {
+	font-size: clamp(24px, 5vw, 48px);
+	font-weight: 700;
+	line-height: 1.2;
+	text-align: center;
+	background: linear-gradient(135deg, #6941c6, #916fde);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	white-space: nowrap;
+	padding: 0 20px;
+
+	// Каждый текст занимает одинаковую высоту
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@keyframes slideText {
+	0%,
+	16% {
+		transform: translateY(0);
+	}
+	20%,
+	36% {
+		transform: translateY(-60px);
+	}
+	40%,
+	56% {
+		transform: translateY(-120px);
+	}
+	60%,
+	76% {
+		transform: translateY(-180px);
+	}
+	80%,
+	96% {
+		transform: translateY(-240px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
