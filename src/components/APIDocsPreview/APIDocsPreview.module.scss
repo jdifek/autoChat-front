@@ -1,0 +1,33 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.box {
+	margin: 32px 0;
+	padding: 16px;
+	text-align: center;
+
+	.title {
+		font-size: 24px;
+		font-weight: 700;
+		margin-bottom: 30px;
+	}
+
+	.description {
+		font-size: 18px;
+		color: variables.$prime-grey-color;
+		margin-bottom: 30px;
+	}
+
+	.codeBlock {
+		margin: 0 auto 30px;
+		max-width: 100%;
+		width: 600px;
+		border-radius: variables.$border-radius-s;
+		overflow: hidden;
+		@include mixins.box-shadow-lg;
+
+		@media screen and (max-width: 768px) {
+			width: 90%;
+		}
+	}
+}

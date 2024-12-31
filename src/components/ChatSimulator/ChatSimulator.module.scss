@@ -1,0 +1,188 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.chatSimulator {
+	padding: 20px;
+	background-color: variables.$white-sec-color;
+	border-radius: variables.$border-radius-m;
+	@include mixins.box-shadow-lg;
+
+	&.dark {
+		background-color: variables.$dark-grey-color;
+	}
+
+	.title {
+		text-align: center;
+		font-size: 24px;
+		font-weight: 700;
+		margin-bottom: 20px;
+	}
+
+	.scenarioSelector {
+		display: grid;
+		gap: 10px;
+		grid-template-columns: 1fr;
+		margin-bottom: 20px;
+		justify-content: center;
+
+		@media screen and (min-width: 768px) {
+			grid-template-columns: repeat(2, auto);
+		}
+
+		@media screen and (min-width: 1024px) {
+			grid-template-columns: repeat(4, auto);
+		}
+
+		.scenarioButton {
+			padding: 8px 16px;
+			max-width: 250px;
+			margin: 0 auto;
+			text-align: center;
+			background-color: transparent;
+			border: none;
+			font-size: 18px;
+			cursor: pointer;
+			position: relative;
+			color: inherit;
+			transition: color 0.3s ease;
+
+			&::after {
+				content: '';
+				display: block;
+				width: 0;
+				height: 2px;
+				background-color: variables.$blue-color;
+				transition: width 0.3s ease;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+			}
+
+			&:hover,
+			&:focus {
+				color: variables.$blue-color;
+			}
+
+			&.active {
+				color: variables.$blue-color;
+			}
+
+			&.active::after {
+				width: 100%;
+			}
+		}
+	}
+
+	.chatWindow {
+		max-height: 300px;
+		overflow-y: auto;
+		background: variables.$white-color;
+		border: 1px solid variables.$border-color;
+		border-radius: variables.$border-radius-s;
+		padding: 10px;
+		margin-bottom: 20px;
+
+		&.dark {
+			background: variables.$prime-black-color;
+			border: 1px solid variables.$sec-black-color;
+		}
+
+		.message {
+			margin-bottom: 10px;
+			padding: 10px;
+			border-radius: 6px;
+			max-width: 80%;
+			color: inherit;
+
+			&.bot {
+				background-color: variables.$blue-light-color;
+				align-self: flex-start;
+			}
+
+			&.user {
+				background-color: variables.$light-grey-color;
+				align-self: flex-end;
+				margin-left: auto;
+			}
+
+			&.dark {
+				&.bot {
+					background-color: variables.$blue-sec-light-color;
+				}
+				&.user {
+					background-color: variables.$prime-grey-color;
+				}
+			}
+		}
+	}
+
+	.inputSection {
+		display: flex;
+		gap: 10px;
+
+		.input {
+			flex: 1;
+			padding: 10px;
+			border: 1px solid variables.$border-color;
+			border-radius: variables.$border-radius-s;
+			outline: none;
+			color: inherit;
+			font-size: 16px;
+
+			&.dark {
+				background: variables.$prime-black-color;
+				border: 1px solid variables.$sec-black-color;
+			}
+
+			&:focus {
+				border-color: variables.$blue-color;
+			}
+		}
+
+		.sendButton {
+			background-color: variables.$blue-color;
+			color: variables.$white-color;
+			padding: 10px 20px;
+			font-size: 16px;
+			border: none;
+			border-radius: variables.$border-radius-s;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:hover {
+				background: variables.$blue-dark-color;
+				border-color: variables.$white-color;
+				transform: translateY(-2px);
+				@include mixins.button-shadow(4px, 8px, 0.2);
+			}
+
+			&:focus {
+				background: variables.$blue-dark-color;
+				box-shadow: 0 0 0 3px rgba(variables.$white-color, 0.5);
+			}
+
+			&:active {
+				transform: translateY(1px);
+				@include mixins.button-shadow();
+			}
+
+			.btnText {
+				display: none;
+				@media screen and (min-width: 768px) {
+					display: inline;
+				}
+			}
+
+			.btnIcon {
+				display: inline;
+				font-size: 18px;
+				@media screen and (min-width: 768px) {
+					display: none;
+				}
+			}
+		}
+	}
+}

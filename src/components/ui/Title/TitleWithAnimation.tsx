@@ -5,8 +5,8 @@ const messages = [
 	'Автоматизированная переписка с клиентами через AI',
 	'Telegram',
 	'WhatsApp',
-	'Viber',
 	'Facebook Messenger',
+	'Instagram Direct ',
 ]
 
 const TitleWithAnimation = () => {

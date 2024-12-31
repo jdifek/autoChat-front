@@ -1,3 +1,11 @@
 @mixin button-shadow($y: 2px, $blur: 4px, $opacity: 0.1) {
 	box-shadow: 0 $y $blur rgba(0, 0, 0, $opacity);
 }
+
+@mixin box-shadow($y: 4px, $blur: 6px, $opacity: 0.1) {
+	box-shadow: 0 $y $blur rgba(0, 0, 0, $opacity);
+}
+
+@mixin box-shadow-lg($x: 2px, $y: 4px, $blur: 8px, $opacity: 0.3) {
+	box-shadow: $x $y $blur rgba(0, 0, 0, $opacity);
+}

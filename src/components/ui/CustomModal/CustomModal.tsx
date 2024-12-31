@@ -1,5 +1,6 @@
 import { Box, Modal } from '@mui/material'
 import React, { CSSProperties } from 'react'
+import { useTheme } from '../../../context/ThemeContext'
 
 interface ICustomModalProps {
 	open: boolean
@@ -14,6 +15,8 @@ const CustomModal = ({
 	children,
 	styles,
 }: ICustomModalProps) => {
+	const { isDarkMode } = useTheme()
+
 	return (
 		<Modal
 			open={open}
@@ -27,7 +30,8 @@ const CustomModal = ({
 					top: '50%',
 					left: '50%',
 					transform: 'translate(-50%, -50%)',
-					bgcolor: 'background.paper',
+					bgcolor: isDarkMode ? '#333' : 'background.paper',
+					color: isDarkMode ? '#fff' : 'inherit',
 					boxShadow: 24,
 					p: 4,
 					borderRadius: 2,

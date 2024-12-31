@@ -9,6 +9,7 @@ interface ButtonProps {
 	onClick?: () => void
 	isLink?: boolean
 	href?: string
+	className?: string
 }
 
 const Button = ({
@@ -18,13 +19,14 @@ const Button = ({
 	onClick,
 	isLink = false,
 	href = '#',
+	className,
 	children,
 }: ButtonProps) => {
 	const buttonElement = (
 		<button
 			type={typeBtn}
 			disabled={disabled}
-			className='button'
+			className={`button ${className || ''}`}
 			onClick={onClick}
 			style={{
 				...styles,

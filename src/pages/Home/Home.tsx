@@ -1,17 +1,29 @@
 import Advantages from '../../components/Advantages/Advantages'
 import CTASection from '../../components/CTASection/CTASection'
+import HowItWorks from '../../components/HowItWorks/HowItWorks'
+import Reviews from '../../components/Reviews/Reviews'
 import Title from '../../components/ui/Title/Title'
 import TitleWithAnimation from '../../components/ui/Title/TitleWithAnimation'
 
 export const Home = () => {
 	return (
-		<div className='section'>
+		<div className='heading-section'>
 			<TitleWithAnimation />
-			<Title as='h2'>
+			<Title as='h2' style={{ marginBottom: '32px' }}>
 				Повысьте эффективность коммуникации с помощью искусственного интеллекта
 			</Title>
-			<Advantages />
-			<CTASection />
+			<div className='section'>
+				<Advantages />
+			</div>
+			<div className='section'>
+				<CTASection />
+			</div>
+			<div className='section'>
+				<Reviews />
+			</div>
+			<div className='section'>
+				<HowItWorks />
+			</div>
 		</div>
 	)
 }

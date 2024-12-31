@@ -1,0 +1,65 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.box {
+	padding: 16px;
+	text-align: center;
+
+	.title {
+		font-size: 24px;
+		font-weight: 700;
+		margin-bottom: 30px;
+	}
+
+	.features {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 32px;
+		justify-items: center;
+
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.feature {
+		width: 100%;
+		background: variables.$white-color;
+		border: 1px solid variables.$border-color;
+		border-radius: variables.$border-radius-m;
+		padding: 24px;
+		transition: transform 0.2s ease-in-out;
+		text-align: center;
+		@include mixins.box-shadow;
+
+		@media screen and (max-width: 767px) {
+			min-height: 240px;
+		}
+
+		&.dark {
+			background: variables.$prime-black-color;
+			border: 1px solid variables.$sec-black-color;
+		}
+
+		&:hover {
+			transform: translateY(-5px);
+		}
+	}
+
+	.icon {
+		font-size: 48px;
+		color: variables.$green-color;
+		margin-bottom: 16px;
+	}
+
+	.featureTitle {
+		font-size: 20px;
+		font-weight: 700;
+		margin-bottom: 8px;
+	}
+
+	.featureDescription {
+		font-size: 16px;
+		color: variables.$prime-grey-color;
+	}
+}

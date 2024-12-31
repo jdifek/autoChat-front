@@ -30,7 +30,7 @@ const CTASection = () => {
 				</video>
 				<div className={styles.overlay} />
 			</div>
-			<CTAButton isLink href='/pricing'>
+			<CTAButton isLink href='/pricing' className={styles.btn}>
 				Начать бесплатно
 			</CTAButton>
 		</div>

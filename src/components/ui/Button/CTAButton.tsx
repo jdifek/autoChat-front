@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 
 interface CTAButtonProps {
@@ -7,6 +8,8 @@ interface CTAButtonProps {
 	onClick?: () => void
 	isLink?: boolean
 	href?: string
+	style?: CSSProperties
+	className?: string
 }
 
 const CTAButton = ({
@@ -16,12 +19,15 @@ const CTAButton = ({
 	isLink = false,
 	href = '#',
 	children,
+	style,
+	className,
 }: CTAButtonProps) => {
 	const buttonElement = (
 		<button
 			type={typeBtn}
 			disabled={disabled}
-			className='cta-button'
+			className={`cta-button ${className || ''}`}
+			style={style}
 			onClick={onClick}
 		>
 			{children}
