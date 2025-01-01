@@ -1,0 +1,39 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.table-container {
+	@include mixins.box-shadow-lg;
+	background: variables.$white-color;
+	border: 1px solid variables.$border-color;
+
+	&.dark {
+		background: variables.$prime-black-color;
+		border: 1px solid variables.$sec-black-color;
+
+		.MuiTableCell-root {
+			padding: 12px;
+			color: variables.$white-color;
+		}
+	}
+
+	&.MuiTableContainer-root {
+		border-radius: variables.$border-radius-m;
+
+		.MuiTableCell-head {
+			font-size: 18px;
+			font-weight: 700;
+			text-align: center;
+		}
+
+		.MuiTableCell-root {
+			padding: 12px;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.MuiTableCell-root {
+			font-size: 18px;
+			padding: 8px;
+		}
+	}
+}

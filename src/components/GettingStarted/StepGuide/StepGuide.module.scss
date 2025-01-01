@@ -1,0 +1,47 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.box {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	.step {
+		background-color: variables.$border-color;
+		padding: 20px;
+		border-radius: 8px;
+		@include mixins.box-shadow;
+	}
+
+	.stepTitle {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+	.stepDescription {
+		color: variables.$prime-grey-color;
+		font-size: 16px;
+		margin-bottom: 20px;
+	}
+
+	.stepImage {
+		width: 100%;
+		height: auto;
+		border-radius: variables.$border-radius-s;
+	}
+
+	.checklist {
+		li {
+			font-size: 16px;
+			font-weight: 500;
+			margin-bottom: 10px;
+			font-style: italic;
+		}
+	}
+
+	&.dark {
+		.step {
+			background-color: variables.$dark-grey-color;
+		}
+	}
+}

@@ -19,6 +19,7 @@
 	}
 
 	.codeBlock {
+		position: relative;
 		margin: 0 auto 30px;
 		max-width: 100%;
 		width: 600px;
@@ -28,6 +29,27 @@
 
 		@media screen and (max-width: 768px) {
 			width: 90%;
+		}
+	}
+
+	.copyBtn {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		background-color: transparent;
+		color: variables.$sec-grey-color;
+		border: none;
+		border-radius: variables.$border-radius-xs;
+		padding: 4px;
+		cursor: pointer;
+		font-size: 18px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: variables.$prime-black-color;
 		}
 	}
 }

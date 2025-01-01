@@ -1,0 +1,48 @@
+@use '/src/assets/styles/variables.scss';
+
+.switcher {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+
+	button {
+		padding: 8px 16px;
+		text-align: center;
+		background-color: transparent;
+		border: none;
+		font-size: 18px;
+		cursor: pointer;
+		position: relative;
+		color: inherit;
+		transition: color 0.3s ease;
+
+		&::after {
+			content: '';
+			display: block;
+			width: 0;
+			height: 2px;
+			background-color: variables.$blue-color;
+			transition: width 0.3s ease;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+
+		&:hover,
+		&:focus {
+			color: variables.$blue-color;
+		}
+
+		&.active {
+			color: variables.$blue-color;
+		}
+
+		&.active::after {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 420px) {
+		flex-direction: column;
+	}
+}

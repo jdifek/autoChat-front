@@ -87,6 +87,25 @@
 			border: 1px solid variables.$sec-black-color;
 		}
 
+		&::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: variables.$light-grey-color;
+			border-radius: variables.$border-radius-s;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			cursor: pointer;
+			background: variables.$prime-grey-color;
+			border-radius: variables.$border-radius-s;
+		}
+
+		&::-webkit-scrollbar-thumb:hover {
+			background: variables.$blue-color;
+		}
+
 		.message {
 			margin-bottom: 10px;
 			padding: 10px;

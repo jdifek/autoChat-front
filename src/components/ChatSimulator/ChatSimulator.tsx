@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { FaPaperPlane } from 'react-icons/fa'
 import { useTheme } from '../../context/ThemeContext'
@@ -24,6 +25,8 @@ const ChatSimulator = () => {
 
 	const { register, handleSubmit, reset } = useForm<IFormInput>()
 
+	const chatWindowRef = useRef<HTMLDivElement | null>(null)
+
 	const onSubmit: SubmitHandler<IFormInput> = data => {
 		const userMessage: Message = { sender: 'user', text: data.message }
 		setChatHistory(prev => [...prev, userMessage, { sender: 'bot', text: '' }])
@@ -32,6 +35,13 @@ const ChatSimulator = () => {
 		typeReply(botReply)
 		reset()
 	}
+
+	// Прокрутка вниз при изменении истории чата
+	useEffect(() => {
+		if (chatWindowRef.current) {
+			chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight
+		}
+	}, [chatHistory])
 
 	return (
 		<div className={`${styles.chatSimulator} ${isDarkMode ? styles.dark : ''}`}>
@@ -49,7 +59,10 @@ const ChatSimulator = () => {
 					</button>
 				))}
 			</div>
-			<div className={`${styles.chatWindow} ${isDarkMode ? styles.dark : ''}`}>
+			<div
+				ref={chatWindowRef}
+				className={`${styles.chatWindow} ${isDarkMode ? styles.dark : ''}`}
+			>
 				{chatHistory.map((message, index) => (
 					<div
 						key={index}

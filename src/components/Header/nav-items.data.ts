@@ -13,7 +13,7 @@ export const NAV_ITEMS = [
 	},
 	{
 		name: 'Как начать',
-		link: '/getting-started',
+		link: '/get-start',
 	},
 	{
 		name: 'Блог',

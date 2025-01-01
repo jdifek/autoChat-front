@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Message, Scenario } from '../types'
 
 export const useChatSimulator = (defaultScenario: Scenario) => {
@@ -9,25 +9,30 @@ export const useChatSimulator = (defaultScenario: Scenario) => {
 	])
 	const [typing, setTyping] = useState(false)
 
+	// Хранение текущего интервала для очистки
+	const typingIntervalRef = useRef<NodeJS.Timeout | null>(null)
+
 	const handleScenarioChange = (scenario: Scenario) => {
+		// Очистка текущего интервала
+		if (typingIntervalRef.current) {
+			clearInterval(typingIntervalRef.current)
+			typingIntervalRef.current = null
+			setTyping(false) // Остановка индикатора печати
+		}
+
+		// Смена сценария и сброс истории чата
 		setSelectedScenario(scenario)
 		setChatHistory([{ sender: 'bot', text: scenario.welcomeMessage }])
 	}
 
 	const isGibberish = (message: string): boolean => {
-		// Проверяем, если сообщение похоже на хаотичный текст
-		// Сообщение содержит много букв, но не формирует осмысленные слова
-		const gibberishPattern = /^[а-яА-ЯёЁ\s]+$/ // Сообщение только на русском с пробелами
-		const words = message.split(/\s+/) // Разделяем сообщение на слова
+		// Сообщение только на русском с пробелами
+		const gibberishPattern = /^[а-яА-ЯёЁ\s]+$/
+		const words = message.trim().split(/\s+/) // Разделяем сообщение на слова
 
-		if (!gibberishPattern.test(message)) return true // Если не только буквы и пробелы
-		if (words.length === 0) return true // Пустое сообщение или только пробелы
-
-		// Проверка на хаотичный текст: слова слишком короткие или случайные буквы
-		return words.some(
-			word =>
-				word.length < 2 || /[йцукенгшщзхъфывпролджэячсмитьбю]{3,}/i.test(word)
-		)
+		if (!message.trim()) return true // Пустое сообщение или только пробелы
+		if (!gibberishPattern.test(message)) return true // Сообщение содержит недопустимые символы
+		return words.some(word => word.length < 2) // Слово меньше двух букв
 	}
 
 	const findBotReply = (message: string): string => {
@@ -42,9 +47,15 @@ export const useChatSimulator = (defaultScenario: Scenario) => {
 	}
 
 	const typeReply = (text: string) => {
+		// Остановка предыдущей анимации, если она есть
+		if (typingIntervalRef.current) {
+			clearInterval(typingIntervalRef.current)
+		}
+
 		setTyping(true)
 		let currentText = ''
-		const interval = setInterval(() => {
+
+		typingIntervalRef.current = setInterval(() => {
 			if (currentText.length < text.length) {
 				currentText += text[currentText.length]
 				setChatHistory(prev => {
@@ -53,7 +64,8 @@ export const useChatSimulator = (defaultScenario: Scenario) => {
 					return updated
 				})
 			} else {
-				clearInterval(interval)
+				clearInterval(typingIntervalRef.current!)
+				typingIntervalRef.current = null
 				setTyping(false)
 			}
 		}, 50)

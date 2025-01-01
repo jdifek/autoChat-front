@@ -1,0 +1,69 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.card {
+	background: variables.$white-color;
+	border: 1px solid variables.$border-color;
+	border-radius: variables.$border-radius-m;
+	padding: 24px;
+	text-align: center;
+	@include mixins.box-shadow;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: hidden;
+	transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+	&:hover {
+		@include mixins.box-shadow-xl;
+	}
+
+	&.dark {
+		background: variables.$prime-black-color;
+		border: 1px solid variables.$sec-black-color;
+	}
+
+	&.yearly {
+		background: linear-gradient(135deg, #6a85b6 0%, #bac8e0 100%);
+
+		&:hover {
+			@include mixins.box-shadow-xl;
+		}
+	}
+
+	.title {
+		font-size: 20px;
+		font-weight: 700;
+		margin-bottom: 20px;
+	}
+
+	.feature {
+		margin-bottom: 8px;
+		font-size: 16px;
+		color: variables.$prime-grey-color;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&.yearly {
+			color: inherit;
+		}
+	}
+
+	.price {
+		margin-top: 16px;
+		font-size: 24px;
+		font-weight: 700;
+		color: variables.$blue-color;
+
+		&.yearly {
+			font-size: 20px;
+			color: variables.$white-color;
+			background: variables.$blue-color;
+			border-radius: variables.$border-radius-s;
+			padding: 8px 16px;
+			display: inline-block;
+		}
+	}
+}

@@ -1,0 +1,14 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.diagramContainer {
+	width: 100%;
+	height: 400px;
+	margin: 20px 0;
+	background-color: variables.$white-sec-color;
+	border: 2px solid variables.$border-color;
+	border-radius: variables.$border-radius-s;
+	position: relative;
+	overflow: hidden;
+	@include mixins.box-shadow;
+}

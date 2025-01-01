@@ -47,13 +47,13 @@ const Header = () => {
 				<div className={styles.modalBtn}>
 					<Button
 						isLink
-						href='/login'
+						href='/sign-in'
 						styles={{ minWidth: '100%' }}
 						onClick={toggleMenu}
 					>
 						Войти
 					</Button>
-					<Button isLink href='/register' onClick={toggleMenu}>
+					<Button isLink href='/sign-up' onClick={toggleMenu}>
 						Регистрация
 					</Button>
 				</div>
@@ -77,11 +77,11 @@ const Header = () => {
 					))}
 				</ul>
 			</nav>
-			<div className={styles.btn}>
-				<Button isLink href='/login'>
+			<div className={styles.btnBlock}>
+				<Button isLink href='/sign-in' className={styles.btn}>
 					Войти
 				</Button>
-				<Button isLink href='/register'>
+				<Button isLink href='/sign-up' className={styles.btn}>
 					Регистрация
 				</Button>
 			</div>

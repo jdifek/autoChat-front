@@ -6,7 +6,7 @@ const messages = [
 	'Telegram',
 	'WhatsApp',
 	'Facebook Messenger',
-	'Instagram Direct ',
+	'Instagram Direct',
 ]
 
 const TitleWithAnimation = () => {

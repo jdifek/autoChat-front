@@ -11,7 +11,7 @@ const HowItWorks = () => {
 	return (
 		<>
 			<ParallaxBanner
-				layers={[{ image: '/public/images/parallax-bg.jpg', speed: -20 }]}
+				layers={[{ image: '/images/parallax-bg.jpg', speed: -20 }]}
 				className={styles.parallaxWrapper}
 			>
 				<div className={styles.overlay}></div>

@@ -1,0 +1,39 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.faqContainer {
+	.faqItem {
+		margin-bottom: 10px;
+		border: 1px solid variables.$border-color;
+		border-radius: variables.$border-radius-xs;
+	}
+
+	.faqQuestion {
+		cursor: pointer;
+		font-weight: 700;
+		padding: 10px;
+		background-color: variables.$light-grey-color;
+	}
+
+	.faqAnswer {
+		padding: 10px;
+		background-color: variables.$white-sec-color;
+		border-radius: variables.$border-radius-xs;
+		font-style: italic;
+		overflow: hidden;
+	}
+
+	&.dark {
+		.faqItem {
+			border: 1px solid variables.$sec-black-color;
+		}
+
+		.faqQuestion {
+			background-color: variables.$sec-black-color;
+		}
+
+		.faqAnswer {
+			background-color: variables.$dark-grey-color;
+		}
+	}
+}

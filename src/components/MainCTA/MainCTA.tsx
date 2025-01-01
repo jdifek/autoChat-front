@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import CTAButton from '../ui/Button/CTAButton'
-import styles from './CTASection.module.scss'
+import styles from './MainCTA.module.scss'
 
-const CTASection = () => {
+const MainCTA = () => {
 	const videoRef = useRef<HTMLVideoElement>(null)
 
 	useEffect(() => {
@@ -37,4 +37,4 @@ const CTASection = () => {
 	)
 }
 
-export default CTASection
+export default MainCTA

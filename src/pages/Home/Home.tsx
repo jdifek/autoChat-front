@@ -1,6 +1,6 @@
 import Advantages from '../../components/Advantages/Advantages'
-import CTASection from '../../components/CTASection/CTASection'
 import HowItWorks from '../../components/HowItWorks/HowItWorks'
+import MainCTA from '../../components/MainCTA/MainCTA'
 import Reviews from '../../components/Reviews/Reviews'
 import Title from '../../components/ui/Title/Title'
 import TitleWithAnimation from '../../components/ui/Title/TitleWithAnimation'
@@ -16,7 +16,7 @@ export const Home = () => {
 				<Advantages />
 			</div>
 			<div className='section'>
-				<CTASection />
+				<MainCTA />
 			</div>
 			<div className='section'>
 				<Reviews />
