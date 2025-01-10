@@ -13,26 +13,22 @@ export const useChatSimulator = (defaultScenario: Scenario) => {
 	const typingIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
 	const handleScenarioChange = (scenario: Scenario) => {
-		// Очистка текущего интервала
 		if (typingIntervalRef.current) {
 			clearInterval(typingIntervalRef.current)
 			typingIntervalRef.current = null
 			setTyping(false) // Остановка индикатора печати
 		}
-
-		// Смена сценария и сброс истории чата
 		setSelectedScenario(scenario)
 		setChatHistory([{ sender: 'bot', text: scenario.welcomeMessage }])
 	}
 
 	const isGibberish = (message: string): boolean => {
-		// Сообщение только на русском с пробелами
-		const gibberishPattern = /^[а-яА-ЯёЁ\s]+$/
-		const words = message.trim().split(/\s+/) // Разделяем сообщение на слова
+		// Проверяем, содержит ли сообщение буквы
+		const containsLetters = /[а-яА-ЯёЁa-zA-Z]/.test(message)
+		// Проверяем, состоит ли сообщение только из символов
+		const onlySymbols = /^[^a-zA-Zа-яА-ЯёЁ]+$/u.test(message)
 
-		if (!message.trim()) return true // Пустое сообщение или только пробелы
-		if (!gibberishPattern.test(message)) return true // Сообщение содержит недопустимые символы
-		return words.some(word => word.length < 2) // Слово меньше двух букв
+		return !containsLetters || onlySymbols
 	}
 
 	const findBotReply = (message: string): string => {
@@ -47,7 +43,6 @@ export const useChatSimulator = (defaultScenario: Scenario) => {
 	}
 
 	const typeReply = (text: string) => {
-		// Остановка предыдущей анимации, если она есть
 		if (typingIntervalRef.current) {
 			clearInterval(typingIntervalRef.current)
 		}

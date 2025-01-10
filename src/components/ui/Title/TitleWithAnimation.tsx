@@ -30,16 +30,9 @@ const TitleWithAnimation = () => {
 	}, [])
 
 	return (
-		<div
-			style={{
-				textAlign: 'center',
-				position: 'relative',
-				height: '160px',
-				marginBottom: '32px',
-			}}
-		>
+		<div className='thumb-animated'>
 			{/* Анимация для нового текста */}
-			<animated.h2 style={fadeIn} className='title-animated'>
+			<animated.h2 style={fadeIn} className='thumb-animated__title'>
 				{messages[index]}
 			</animated.h2>
 		</div>

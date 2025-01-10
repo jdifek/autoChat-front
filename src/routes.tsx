@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { APIDocumentation } from './pages/APIDocumentation/APIDocumentation'
-import { Blog } from './pages/Blog/Blog'
 import { BotSettings } from './pages/BotSettings/BotSettings'
+import { Dashboard } from './pages/Dashboard/Dashboard'
 import { Features } from './pages/Features/Features'
 import { GettingStarted } from './pages/GettingStarted/GettingStarted'
 import { Home } from './pages/Home/Home'
@@ -16,7 +16,9 @@ const RoutesConfig = () => {
 			<Route path='/features' element={<Features />} />
 			<Route path='/pricing' element={<Pricing />} />
 			<Route path='/get-start' element={<GettingStarted />} />
-			<Route path='/blog' element={<Blog />} />
+			{/* <Route path='/blog' element={<Blog />} /> */}
+			{/* временно указан путь /blog */}
+			<Route path='/blog' element={<Dashboard />} />
 			<Route path='/api-docs' element={<APIDocumentation />} />
 			<Route path='/bot-set' element={<BotSettings />} />
 			<Route path='/sign-in' element={<Login />} />
