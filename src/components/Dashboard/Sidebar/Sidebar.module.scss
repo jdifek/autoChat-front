@@ -25,11 +25,34 @@
 			padding: 0;
 
 			li {
+				display: flex;
+				align-items: center;
 				padding: 10px 20px;
+				height: 70px;
 				cursor: pointer;
+				transition: background-color 0.2s ease;
 
 				&:hover {
 					background-color: #374151;
+				}
+
+				.icon {
+					font-size: 20px;
+					color: #9ca3af;
+					margin-right: 10px;
+				}
+
+				.text {
+					font-size: 16px;
+					color: #e5e7eb;
+					transition: opacity 0.3s ease, transform 0.3s ease;
+					opacity: 0;
+					transform: translateX(-10px);
+
+					&.open {
+						opacity: 1;
+						transform: translateX(0);
+					}
 				}
 			}
 		}
@@ -41,6 +64,21 @@
 	border: none;
 	color: #fff;
 	cursor: pointer;
-	padding: 10px;
-	font-size: 16px;
+	text-align: right;
+	transition: background-color 0.2s ease;
+	padding: 10px 20px;
+
+	&:hover {
+		background-color: #4b5563;
+	}
+
+	.icon {
+		font-size: 20px;
+		color: #9ca3af;
+		margin-right: 10px;
+
+		@media screen and (max-width: 768px) {
+			margin-right: 0;
+		}
+	}
 }

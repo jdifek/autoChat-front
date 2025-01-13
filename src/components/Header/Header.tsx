@@ -1,17 +1,28 @@
 import { AlignJustify, X } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
-import { useBurgerModal } from '../../hooks/useBurgerModal'
+import { useModal } from '../../hooks/useModal'
 import Button from '../ui/Button/Button'
 import CustomModal from '../ui/CustomModal/CustomModal'
 import Logo from '../ui/Logo/Logo'
 import ThemeSwitch from '../ui/ThemeSwitch/ThemeSwitch'
+import { UserMenu } from '../ui/UserMenu/UserMenu'
 import styles from './Header.module.scss'
 import { NAV_ITEMS } from './nav-items.data'
 
 const Header = () => {
-	const { isMenuOpen, toggleMenu } = useBurgerModal()
+	const { isMenuOpen, toggleMenu } = useModal()
 	const { isDarkMode, toggleTheme } = useTheme()
+	const isAuth = Boolean(true)
+
+	const userData = {
+		fullName: 'Михаил Смирнов',
+		avatarUrl: '/images/cr-1.jpg',
+	}
+
+	const onClickLogout = () => {
+		alert('Вы вышли')
+	}
 
 	return (
 		<div className={styles.header}>
@@ -77,14 +88,21 @@ const Header = () => {
 					))}
 				</ul>
 			</nav>
-			<div className={styles.btnBlock}>
-				<Button isLink href='/sign-in' className={styles.btn}>
-					Войти
-				</Button>
-				<Button isLink href='/sign-up' className={styles.btn}>
-					Регистрация
-				</Button>
-			</div>
+			{isAuth ? (
+				<div className={styles.btnBlock}>
+					<UserMenu user={userData} onClickLogout={onClickLogout} />
+				</div>
+			) : (
+				<div className={styles.btnBlock}>
+					<Button isLink href='/sign-in' className={styles.btn}>
+						Войти
+					</Button>
+					<Button isLink href='/sign-up' className={styles.btn}>
+						Регистрация
+					</Button>
+				</div>
+			)}
+
 			<ThemeSwitch toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
 		</div>
 	)

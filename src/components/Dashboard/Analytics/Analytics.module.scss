@@ -1,0 +1,102 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.analyticsContainer {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+
+	@media screen and (max-width: 768px) {
+		padding: 10px;
+	}
+}
+
+.chartSection,
+.faqSection,
+.recommendationSection {
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+	h2 {
+		margin-bottom: 15px;
+		font-size: 20px;
+	}
+
+	@media screen and (max-width: 768px) {
+		padding: 15px;
+
+		h2 {
+			font-size: 18px;
+		}
+	}
+}
+
+.keywordSection {
+	padding: 20px;
+	background-color: #ffffff;
+	border-radius: 12px;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+	text-align: center;
+
+	.sectionTitle {
+		font-size: 24px;
+		font-weight: 600;
+		margin-bottom: 20px;
+		color: #222;
+	}
+
+	.keywordList {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		@media screen and (min-width: 768px) {
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	}
+
+	.keywordItem {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #f9f9f9;
+		border-radius: 8px;
+		padding: 10px 15px;
+		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+		font-size: 16px;
+		font-weight: 500;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		&:hover {
+			box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+		}
+
+		.word {
+			color: #333;
+		}
+	}
+}
+
+.faqSection ul,
+.recommendationSection ul {
+	list-style-type: none;
+	padding: 0;
+
+	li {
+		margin-bottom: 10px;
+		font-size: 16px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

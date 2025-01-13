@@ -4,9 +4,17 @@
 .overview {
 	.metrics {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat 1fr;
 		gap: 20px;
 		margin-bottom: 40px;
+
+		@media screen and (min-width: 768px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media screen and (min-width: 1440px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
 
 		.metric {
 			background-color: #f3f4f6;
@@ -28,7 +36,19 @@
 
 	.charts {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		gap: 20px;
+
+		@media screen and (min-width: 1024px) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.chart {
+			min-width: 200px;
+
+			@media screen and (min-width: 1024px) {
+				max-width: 600px;
+			}
+		}
 	}
 }

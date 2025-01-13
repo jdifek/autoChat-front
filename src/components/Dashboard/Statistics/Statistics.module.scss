@@ -1,0 +1,73 @@
+@use '/src/assets/styles/variables.scss';
+@use '/src/assets/styles/mixins.scss';
+
+.statistics {
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+	h2 {
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+
+	.filters {
+		display: flex;
+		gap: 10px;
+		margin-bottom: 20px;
+
+		select {
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 16px;
+			outline: none;
+			cursor: pointer;
+
+			&:hover {
+				border-color: #007bff;
+			}
+		}
+	}
+
+	.chart {
+		margin-bottom: 20px;
+	}
+
+	.export {
+		text-align: right;
+
+		button {
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: #0056b3;
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.filters {
+			flex-direction: column;
+		}
+
+		.chart {
+			canvas {
+				max-width: 100%;
+			}
+		}
+
+		.export {
+			button {
+				width: 100%;
+			}
+		}
+	}
+}
